@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.ContextThemeWrapper;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import java.net.MalformedURLException;
 
@@ -24,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i=0; i < grigNum; i++) {
             for (int j = 0; j <grigNum; j++){
-                Button Masu = new Button(this);
-                Masu.setText(i + "." + j);
+                ImageButton Masu = new ImageButton(this);
+                //Masu.setText(i + "." + j);
                 GridLayout.LayoutParams MasuLayoutParams = new GridLayout.LayoutParams();
                 MasuLayoutParams.width = GD.getWidth();
                 System.out.println("GD.getWidth() : " + GD.getWidth());
@@ -42,8 +44,16 @@ public class MainActivity extends AppCompatActivity {
             MasuLayoutParams.columnSpec =  GridLayout.spec(i);
             */
                 Masu.setLayoutParams(MasuLayoutParams);
-
+                //Masu.setBackgroundResource(R.drawable.osero_kuro);
                 Masu.setBackgroundResource(R.drawable.frame_style);
+                if(i == grigNum/2 - 1 && j == grigNum/2 - 1 || i == grigNum/2 && j == grigNum/2) {
+                    Masu.setImageResource(R.drawable.osero_siro);
+                }
+                if(i == grigNum/2 - 1 && j == grigNum/2 || i == grigNum/2 && j == grigNum/2 - 1) {
+                    Masu.setImageResource(R.drawable.osero_kuro);
+                }
+                Masu.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
                 GD.addView(Masu);
 
             }
